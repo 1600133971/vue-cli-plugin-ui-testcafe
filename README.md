@@ -1,6 +1,6 @@
-# ☕️ vue-cli-plugin-e2e-testcafe
+# ☕️ vue-cli-plugin-e2e-st-testcafe
 
-> e2e-testcafe plugin for vue-cli (WIP)
+> e2e-testcafe plugin(ui) for vue-cli (WIP)
 
 This adds E2E testing support using [TestCafe](https://testcafe.devexpress.com/).
 
@@ -59,5 +59,5 @@ We've pre-configured TestCafe to place most of the e2e testing related files und
 ## Installing in an Already Created Project
 
 ``` sh
-npm install -D vue-cli-plugin-e2e-testcafe
+npm install -D vue-cli-plugin-e2e-st-testcafe
 ```
