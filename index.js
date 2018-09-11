@@ -57,10 +57,10 @@ module.exports = (api, options) => {
   };
 
   api.registerCommand(
-    "e2e",
+    "testcafe",
     {
       description: "run e2e tests headlessly with `testcafe chrome:headless`",
-      usage: "vue-cli-service e2e [options]",
+      usage: "vue-cli-service testcafe [options]",
       options: Object.assign(
         {
           // "--arg": "insert extra argument here"
@@ -77,10 +77,10 @@ module.exports = (api, options) => {
   );
 
   api.registerCommand(
-    "e2e:open",
+    "testcafe:open",
     {
       description: "run e2e tests in interactive mode with `testcafe chrome`",
-      usage: "vue-cli-service e2e:open [options]",
+      usage: "vue-cli-service testcafe:open [options]",
       options: commandOptions,
       details:
         `All TestCafe CLI options are supported:\n` +

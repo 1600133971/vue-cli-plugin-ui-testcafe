@@ -7,8 +7,8 @@ module.exports = (api, _, __, invoking) => {
     devDependencies: {
     },
     scripts: {
-      "e2e": "vue-cli-service e2e",
-      "e2e:open": "vue-cli-service e2e:open"
+      "testcafe": "vue-cli-service testcafe",
+      "testcafe:open": "vue-cli-service testcafe:open"
     }
   })
 
