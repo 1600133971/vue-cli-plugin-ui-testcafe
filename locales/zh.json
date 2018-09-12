@@ -1,0 +1,43 @@
+{
+  "org": {
+    "vue":{
+      "st": {
+        "testcafe": {
+          "config": {
+            "description": "配置Testcafe选项",
+            "tab1": {
+              "label": "通用"
+            },
+            "tab2": {
+              "label": "选项"
+            }
+          },
+          "tasks": {
+            "description": "编译并启动testcafe测试",
+            "mode": {
+              "description": "指定环境模式"
+            },
+            "browser": {
+              "description": "指定浏览器"
+            },
+            "custombrowser": {
+              "description": "指定定制浏览器"
+            },
+            "reporter": {
+              "description": "指定报告器"
+            },
+            "customreporter": {
+              "description": "指定定制报告器"
+            },
+            "file": {
+              "description": "指定测试用例文件位置"
+            },
+            "skipuncaughterror": {
+              "description": "选项：忽略未捕获错误"
+            }
+          }
+        }
+      }
+    }
+  }
+}

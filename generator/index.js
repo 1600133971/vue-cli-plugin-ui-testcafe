@@ -7,8 +7,7 @@ module.exports = (api, _, __, invoking) => {
     devDependencies: {
     },
     scripts: {
-      "testcafe": "vue-cli-service testcafe",
-      "testcafe:open": "vue-cli-service testcafe:open"
+      "testcafe": "vue-cli-service testcafe"
     }
   })
 

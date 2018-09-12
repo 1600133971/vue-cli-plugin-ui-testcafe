@@ -10,10 +10,11 @@ function removeArg(rawArgs, arg) {
 module.exports = (api, options) => {
   const chalk = require("chalk");
 
-  function run(command, args, rawArgs) {
+  function run(args, rawArgs) {
     removeArg(rawArgs, "url");
     removeArg(rawArgs, "mode");
     removeArg(rawArgs, "file");
+    removeArg(rawArgs, "browser");
 
     const serverPromise = args.url
       ? Promise.resolve({ url: args.url })
@@ -24,12 +25,12 @@ module.exports = (api, options) => {
       info(`Starting e2e tests...`);
 
       const testCafeArgs = [
-        command,
+        args.browser,
         args.file,
         `--hosename=${url}`,
         ...rawArgs
       ].filter(v => v);
-
+      info(`testcafe ` + testCafeArgs.join(" "));
       const execa = require("execa");
       const testCafeBinPath = require.resolve("testcafe/bin/testcafe");
       const runner = execa(testCafeBinPath, testCafeArgs, { stdio: "inherit" });
@@ -49,17 +50,15 @@ module.exports = (api, options) => {
   }
 
   const commandOptions = {
-    "--mode":
-      "specify the mode the dev server should run in. (default: production)",
-    "--url":
-      "run e2e tests against given url instead of auto-starting dev server",
-    "--spec": "runs a specific spec file or directory of spec files"
+    "--mode": "specify the mode the dev server should run in. (default: production)",
+    "--url":  "run e2e tests against given url instead of auto-starting dev server",
+    "--file": "runs a specific spec file or directory of spec files"
   };
 
   api.registerCommand(
     "testcafe",
     {
-      description: "run e2e tests headlessly with `testcafe chrome:headless`",
+      description: "run e2e tests with testcafe",
       usage: "vue-cli-service testcafe [options]",
       options: Object.assign(
         {
@@ -73,21 +72,6 @@ module.exports = (api, options) => {
           `https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html`
         )
     },
-    (args, rawArgs) => run("chrome:headless", args, rawArgs)
-  );
-
-  api.registerCommand(
-    "testcafe:open",
-    {
-      description: "run e2e tests in interactive mode with `testcafe chrome`",
-      usage: "vue-cli-service testcafe:open [options]",
-      options: commandOptions,
-      details:
-        `All TestCafe CLI options are supported:\n` +
-        chalk.yellow(
-          `https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html`
-        )
-    },
-    (args, rawArgs) => run("chrome", args, rawArgs)
+    (args, rawArgs) => run(args, rawArgs)
   );
 };

@@ -1,0 +1,43 @@
+{
+  "org": {
+    "vue": {
+      "st": {
+        "testcafe": {
+          "config": {
+            "description": "Configure options of Testcafe",
+            "tab1": {
+              "label": "General"
+            },
+            "tab2": {
+              "label": "Options"
+            }
+          },
+          "tasks": {
+            "description": "Compile and testing with testcafe",
+            "mode": {
+              "description": "Specify env mode"
+            },
+            "browser": {
+              "description": "Specify browser"
+            },
+            "custombrowser": {
+              "description": "Specify custom browser"
+            },
+            "reporter": {
+              "description": "Specify reporter"
+            },
+            "customreporter": {
+              "description": "Specify custom reporter"
+            },
+            "file": {
+              "description": "Testcase files for testcafe"
+            },
+            "skipuncaughterror": {
+              "description": "Options: skip uncaught errors"
+            }
+          }
+        }
+      }
+    }
+  }
+}
