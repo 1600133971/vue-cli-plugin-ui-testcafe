@@ -13,7 +13,7 @@ module.exports = api => {
       eslint: {
         js: ['.eslintrc.js'],
         json: ['.eslintrc', '.eslintrc.json'],
-        // 会从 `package.json` 读取
+        // 浼氫粠 `package.json` 璇诲彇
         package: 'eslintConfig'
       },
       // vue.config.js
@@ -28,7 +28,7 @@ module.exports = api => {
           label: 'org.vue.st.testcafe.config.tab1.label',
           icon: 'settings',
           prompts: [
-            // 提示符对象们
+            // 鎻愮ず绗﹀璞′滑
           ]
         },
         {
@@ -36,7 +36,7 @@ module.exports = api => {
           label: 'org.vue.st.testcafe.config.tab2.label',
           icon: 'settings_applications',
           prompts: [
-            // 提示符对象们
+            // 鎻愮ず绗﹀璞′滑
           ]
         }
       ]
@@ -127,26 +127,6 @@ module.exports = api => {
           {
             name: 'custom',
             value: 'custom'
-          },
-          {
-            name: 'remote',
-            value: 'remote'
-          },
-          {
-            name: 'remote:1',
-            value: 'remote:1'
-          },
-          {
-            name: 'remote:2',
-            value: 'remote:2'
-          },
-          {
-            name: 'remote:3',
-            value: 'remote:3'
-          },
-          {
-            name: 'remote:4',
-            value: 'remote:4'
           }
         ],
         description: 'org.vue.st.testcafe.tasks.browser.description'

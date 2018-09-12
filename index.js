@@ -1,20 +1,20 @@
-function removeArg(rawArgs, arg) {
-  const matchRE = new RegExp(`^--${arg}`);
-  const equalRE = new RegExp(`^--${arg}=`);
-  const i = rawArgs.findIndex(arg => matchRE.test(arg));
-  if (i > -1) {
-    rawArgs.splice(i, equalRE.test(rawArgs[i]) ? 1 : 2);
-  }
-}
-
 module.exports = (api, options) => {
   const chalk = require("chalk");
 
+  function removeArg(rawArgs, arg) {
+    const matchRE = new RegExp(`^--${arg}`);
+    const equalRE = new RegExp(`^--${arg}=`);
+    const i = rawArgs.findIndex(arg => matchRE.test(arg));
+    if (i > -1) {
+      rawArgs.splice(i, equalRE.test(rawArgs[i]) ? 1 : 2);
+    }
+  }
+
   function run(args, rawArgs) {
-    removeArg(rawArgs, "url");
     removeArg(rawArgs, "mode");
-    removeArg(rawArgs, "file");
     removeArg(rawArgs, "browser");
+    removeArg(rawArgs, "file");
+    removeArg(rawArgs, "url");
 
     const serverPromise = args.url
       ? Promise.resolve({ url: args.url })
@@ -27,7 +27,7 @@ module.exports = (api, options) => {
       const testCafeArgs = [
         args.browser,
         args.file,
-        `--hosename=${url}`,
+        `--hosename ${url}`,
         ...rawArgs
       ].filter(v => v);
       info(`testcafe ` + testCafeArgs.join(" "));
