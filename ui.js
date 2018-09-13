@@ -5,9 +5,9 @@ module.exports = api => {
 
   api.describeConfig({
     id: 'org.vue.st.testcafe',
-    name: 'Testcafe configuration',
+    name: 'Testcafe',
     description: 'org.vue.st.testcafe.config.description',
-    link: 'https://eslint.org',
+    link: 'https://github.com/1600133971/vue-cli-plugin-e2e-st-testcafe',
     files: {
       // eslintrc.js
       eslint: {
@@ -362,7 +362,7 @@ module.exports = api => {
       if (answers.fixture) args.push('--fixture', addQuotes(answers.fixture));
       if (answers.fixturegrep) args.push('--fixture-grep', addQuotes(answers.fixturegrep));
       if (answers.app) args.push('--app', addQuotes(answers.app));
-      if (answers.concurrency !== 1) args.push('--concurrency', answers.concurrency);
+      if (answers.concurrency !== '1') args.push('--concurrency', answers.concurrency);
       if (answers.debugonfail) args.push('--debug-on-fail');
       if (answers.appinitdelay) args.push('--app-init-delay', answers.appinitdelay);
       if (answers.selectortimeout) args.push('--selector-timeout', answers.selectortimeout);

@@ -33,7 +33,7 @@
               "description": "Testcase files for testcafe"
             },
             "skipuncaughterror": {
-              "description": "When an uncaught error or unhandled promise rejection occurs on the server during test execution, TestCafe stops the test and posts an error message to a report.To ignore these errors, use the option."
+              "description": "When an uncaught error occurs on the server during test execution, TestCafe stops the test and posts an error message to a report.To ignore these errors, use the option."
             },
             "screenshots": {
               "description": "Enables screenshots and specifies the base directory where they are saved"

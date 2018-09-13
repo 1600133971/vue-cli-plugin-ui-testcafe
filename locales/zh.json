@@ -33,7 +33,7 @@
               "description": "指定测试用例文件位置"
             },
             "skipuncaughterror": {
-              "description": "当测试过程中出现未捕获错误或未处理promise rejection，TestCafe会停止继续测试并上报错误信息报告。为了忽略这个情况，使用本选项"
+              "description": "当测试过程中出现未捕获错误,TestCafe会停止继续测试并上报错误信息报告,使用本选项忽略这种情况"
             },
             "screenshots": {
               "description": "使能截屏并存放截图文档到指定目录"
@@ -42,13 +42,13 @@
               "description": "一旦出现测试失败就截屏，截屏文件存储在screenshots <path>选项指定的目录"
             },
             "screenshotpathpattern": {
-              "description": "指定定制模式构建截屏文件的相对路径和名称，本模式忽略缺省路径模式"
+              "description": "指定定制模式构建截屏文件的相对路径和名称,本模式忽略缺省路径模式"
             },
             "quarantinemode": {
               "description": "为失败测试用例启动隔离模式"
             },
             "skipjserrors": {
-              "description": "当测试页面出现JavaScript错误，TestCafe会停止继续测试并上报错误信息报告。为了忽略这个情况，使用本选项"
+              "description": "当测试页面出现JavaScript错误,TestCafe会停止继续测试并上报错误信息报告,使用本选项忽略这种情况"
             },
             "test": {
               "description": "TestCafe运行指定名称的测试用例"
@@ -81,10 +81,10 @@
               "description": "指定TestCafe尝试成功执行断言判定的允许最大时长(缺省3000毫秒)"
             },
             "pageloadtimeout": {
-              "description": "指定完成DOMContentLoaded时间后TestCafe等待触发window.load事件的允许最大时长(缺省3000毫秒)"
+              "description": "指定完成DOMContentLoaded时间后TestCafe等待触发window.load事件允许最大时长(缺省3000毫秒)"
             },
             "speed": {
-              "description": "指定测试执行速度(缺省1，范围1~0.01)"
+              "description": "指定测试执行速度(缺省1,范围1~0.01)"
             },
             "proxy": {
               "description": "指定本地网络连接互联网的代理服务器"
