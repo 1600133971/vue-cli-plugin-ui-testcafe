@@ -33,7 +33,73 @@
               "description": "Testcase files for testcafe"
             },
             "skipuncaughterror": {
-              "description": "Options: skip uncaught errors"
+              "description": "When an uncaught error or unhandled promise rejection occurs on the server during test execution, TestCafe stops the test and posts an error message to a report.To ignore these errors, use the option."
+            },
+            "screenshots": {
+              "description": "Enables screenshots and specifies the base directory where they are saved"
+            },
+            "screenshotsonfails": {
+              "description": "Takes a screenshot whenever a test fails. Screenshots are saved to the directory specified in the screenshots <path> option."
+            },
+            "screenshotpathpattern": {
+              "description": "Specifies a custom pattern to compose screenshot files' relative path and name. This pattern overrides the default path pattern."
+            },
+            "quarantinemode": {
+              "description": "Enables the quarantine mode for tests that fail"
+            },
+            "skipjserrors": {
+              "description": "When a JavaScript error occurs on a tested web page, TestCafe stops test execution and posts an error message to a report. To ignore JavaScript errors, use the option"
+            },
+            "test": {
+              "description": "TestCafe runs a test with the specified name"
+            },
+            "testgrep": {
+              "description": "TestCafe runs tests whose names match the specified pattern"
+            },
+            "fixture": {
+              "description": "TestCafe runs a fixture with the specified name"
+            },
+            "fixturegrep": {
+              "description": "TestCafe runs fixtures whose names match the specified pattern"
+            },
+            "app": {
+              "description": "Executes the specified shell command before running tests. Use it to launch or deploy the application you are going to test"
+            },
+            "concurrency": {
+              "description": "Specifies that tests should run concurrently"
+            },
+            "debugonfail": {
+              "description": "Specifies whether to automatically enter the debug mode when a test fails"
+            },
+            "appinitdelay": {
+              "description": "Specifies the time (default 1000 milliseconds) allowed for an application launched using the --app option to initialize"
+            },
+            "selectortimeout": {
+              "description": "Specifies the time (default 10000 milliseconds) within which selectors attempt to obtain a node to be returned"
+            },
+            "assertiontimeout": {
+              "description": "Specifies the time (default 3000 milliseconds) TestCafe attempts to successfully execute an assertion if a selector property or a client function was passed as an actual value"
+            },
+            "pageloadtimeout": {
+              "description": "Specifies the time (default 3000 milliseconds) passed after the DOMContentLoaded event, within which TestCafe waits for the window.load event to fire"
+            },
+            "speed": {
+              "description": "Specifies the test execution speed (default 1, 1~0.01)"
+            },
+            "proxy": {
+              "description": "Specifies the proxy server used in your local network to access the Internet"
+            },
+            "ssl": {
+              "description": "Provides options that allow you to establish an HTTPS connection between the client browser and the TestCafe server"
+            },
+            "proxybypass": {
+              "description": "Specifies the resources accessed bypassing the proxy server"
+            },
+            "dev": {
+              "description": "Enables mechanisms to log and diagnose errors. You should enable this option if you are going to contact TestCafe Support to report an issue"
+            },
+            "qrcode": {
+              "description": "Outputs a QR-code that represents URLs used to connect the remote browsers"
             }
           }
         }

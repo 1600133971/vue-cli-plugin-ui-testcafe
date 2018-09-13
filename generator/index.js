@@ -36,7 +36,7 @@ const applyTS = module.exports.applyTS = (api, invoking) => {
     devDependencies: {
     }
   })
-  // inject mocha/chai types to tsconfig.json
+  // inject testcafe types to tsconfig.json
   if (invoking) {
     api.render(files => {
       const tsconfig = files['tsconfig.json']
@@ -44,11 +44,8 @@ const applyTS = module.exports.applyTS = (api, invoking) => {
         const parsed = JSON.parse(tsconfig)
         const types = parsed.compilerOptions.types
         if (types) {
-          if (!types.includes('mocha')) {
-            types.push('mocha')
-          }
-          if (!types.includes('chai')) {
-            types.push('chai')
+          if (!types.includes('testcafe')) {
+            types.push('testcafe')
           }
         }
         files['tsconfig.json'] = JSON.stringify(parsed, null, 2)

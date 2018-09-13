@@ -33,7 +33,73 @@
               "description": "指定测试用例文件位置"
             },
             "skipuncaughterror": {
-              "description": "选项：忽略未捕获错误"
+              "description": "当测试过程中出现未捕获错误或未处理promise rejection，TestCafe会停止继续测试并上报错误信息报告。为了忽略这个情况，使用本选项"
+            },
+            "screenshots": {
+              "description": "使能截屏并存放截图文档到指定目录"
+            },
+            "screenshotsonfails": {
+              "description": "一旦出现测试失败就截屏，截屏文件存储在screenshots <path>选项指定的目录"
+            },
+            "screenshotpathpattern": {
+              "description": "指定定制模式构建截屏文件的相对路径和名称，本模式忽略缺省路径模式"
+            },
+            "quarantinemode": {
+              "description": "为失败测试用例启动隔离模式"
+            },
+            "skipjserrors": {
+              "description": "当测试页面出现JavaScript错误，TestCafe会停止继续测试并上报错误信息报告。为了忽略这个情况，使用本选项"
+            },
+            "test": {
+              "description": "TestCafe运行指定名称的测试用例"
+            },
+            "testgrep": {
+              "description": "TestCafe运行名称符合指定模式的测试用例"
+            },
+            "fixture": {
+              "description": "TestCafe运行指定名称的测试装置"
+            },
+            "fixturegrep": {
+              "description": "TestCafe运行名称符合指定模式的测试装置"
+            },
+            "app": {
+              "description": "运行测试用例前执行指定脚本命令，可以用于启动或部署测试相关的应用"
+            },
+            "concurrency": {
+              "description": "指定测试用例并行处理的数量"
+            },
+            "debugonfail": {
+              "description": "指定当测试失败时是否自动进入调试模式"
+            },
+            "appinitdelay": {
+              "description": "指定使用--app启动应用允许运行的最大时长(缺省1000毫秒)"
+            },
+            "selectortimeout": {
+              "description": "指定选择器获取返回节点的允许最大时长(缺省10000毫秒)"
+            },
+            "assertiontimeout": {
+              "description": "指定TestCafe尝试成功执行断言判定的允许最大时长(缺省3000毫秒)"
+            },
+            "pageloadtimeout": {
+              "description": "指定完成DOMContentLoaded时间后TestCafe等待触发window.load事件的允许最大时长(缺省3000毫秒)"
+            },
+            "speed": {
+              "description": "指定测试执行速度(缺省1，范围1~0.01)"
+            },
+            "proxy": {
+              "description": "指定本地网络连接互联网的代理服务器"
+            },
+            "ssl": {
+              "description": "提供选项允许建立浏览器客户端和TestCafe服务器之间的HTTPS连接"
+            },
+            "proxybypass": {
+              "description": "指定穿透代理服务器访问的URL资源"
+            },
+            "dev": {
+              "description": "使能LOG和错误诊断机制，如果需要联系TestCafe支持提供问题报告，可以打开这个选项"
+            },
+            "qrcode": {
+              "description": "输出QR码指定连接远程浏览器的URL信息"
             }
           }
         }
