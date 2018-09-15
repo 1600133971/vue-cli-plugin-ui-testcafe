@@ -36,3 +36,9 @@ We've pre-configured TestCafe to place most of the e2e testing related files und
 ``` sh
 npm install -D vue-cli-plugin-ui-testcafe
 ```
+
+## For TestCafe Statistics in vue-cli 3.x ui, please install vue-cli-addon-ui-testcafe in npm's global mode. NOW this function is blank, please wait.
+
+``` sh
+npm install -g vue-cli-addon-ui-testcafe
+```

@@ -110,6 +110,9 @@
             },
             "url": {
               "description": "Specifies your computer's hostname. It is used when running tests in remote browsers"
+            },
+            "views": {
+              "label": "Statistics"
             }
           }
         }

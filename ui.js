@@ -481,18 +481,25 @@ module.exports = api => {
     onExit: async ({ args, child, cwd, code, signal }) => {
       // code: 退出码
       // signal: 可能会被使用的杀进程信号
-    }/*,
+    },
     // 额外的视图(仪表盘)
     // 默认情况下，这里是展示终端输出的 `output` 视图
     views: [
       {
-        id: 'vue-st-testcafe-dashboard-client-addon',
-        label: 'Dashboard',
+        id: 'org.vue.st.testcafe.client-addon',
+        label: 'org.vue.st.testcafe.tasks.views.label',
         icon: 'dashboard',
-        component: 'vue-st-testcafe-dashboard'
+        component: 'org.vue.st.testcafe.components.test'
       }
     ],
     // 展示任务详情时默认选择的视图 (默认是 `output`)
-    defaultView: 'vue-st-testcafe-dashboard-client-addon'*/
+    //defaultView: 'org.vue.st.testcafe.client-addon'
+  })
+
+  api.addClientAddon({
+    id: 'org.vue.st.testcafe.client-addon',
+    // 包含构建出来的 JS 文件的文件夹
+    path: 'vue-cli-addon-ui-testcafe/dist'
+    //url: 'http://localhost:8042/index.js'
   })
 }

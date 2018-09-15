@@ -2,7 +2,7 @@
   "name": "vue-cli-plugin-ui-testcafe",
   "description": "vue-cli 3 ui plugin to add TestCafe to your Vue Project",
   "author": "1600133971",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "main": "index.js",
   "license": "MIT",
   "repository": {
