@@ -1,15 +1,20 @@
 {
   "name": "vue-cli-plugin-ui-testcafe",
-  "description": "Vue CLI 3.x(ui) plugin to add TestCafe to your Vue Project",
+  "description": "vue-cli 3 ui plugin to add TestCafe to your Vue Project",
   "author": "1600133971",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "main": "index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1600133971/vue-cli-plugin-e2e-st-testcafe.git"
+  },
+  "homepage": "https://github.com/1600133971/vue-cli-plugin-e2e-st-testcafe#readme",
   "dependencies": {
     "eslint-plugin-testcafe": "^0.2.1",
     "testcafe": "^0.22.0",
     "testcafe-vue-selectors": "^3.0.0",
-    "testcafe-reporter-st": "^1.0.1",
+    "testcafe-reporter-st": "^1.0.2",
     "testcafe-reporter-st-minimal": "^1.0.0"
   }
 }

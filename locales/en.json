@@ -4,7 +4,7 @@
       "st": {
         "testcafe": {
           "config": {
-            "description": "Configure options of Testcafe",
+            "description": "Configure options of TestCafe",
             "tab1": {
               "label": "General"
             },
@@ -14,6 +14,13 @@
           },
           "tasks": {
             "description": "Compile and testing with testcafe",
+            "group": {
+              "general": "General Options",
+              "recommended": "Recommended Options",
+              "secondary": "Secondary Options",
+              "network": "Network Options",
+              "debug": "Debug Options"
+            },
             "mode": {
               "description": "Specify env mode"
             },
@@ -21,13 +28,13 @@
               "description": "Specify browser"
             },
             "custombrowser": {
-              "description": "Specify custom browser"
+              "description": "Specify custom browser(browser selects 'custom' option)"
             },
             "reporter": {
               "description": "Specify reporter"
             },
             "customreporter": {
-              "description": "Specify custom reporter"
+              "description": "Specify custom reporter(reporter selects 'custom' option)"
             },
             "file": {
               "description": "Testcase files for testcafe"
@@ -39,10 +46,10 @@
               "description": "Enables screenshots and specifies the base directory where they are saved"
             },
             "screenshotsonfails": {
-              "description": "Takes a screenshot whenever a test fails. Screenshots are saved to the directory specified in the screenshots <path> option."
+              "description": "Takes a screenshot whenever a test fails. Screenshots are saved to the directory specified in the screenshots <path> option"
             },
             "screenshotpathpattern": {
-              "description": "Specifies a custom pattern to compose screenshot files' relative path and name. This pattern overrides the default path pattern."
+              "description": "Specifies a custom pattern to compose screenshot files' relative path and name. This pattern overrides the default path pattern"
             },
             "quarantinemode": {
               "description": "Enables the quarantine mode for tests that fail"
@@ -72,16 +79,16 @@
               "description": "Specifies whether to automatically enter the debug mode when a test fails"
             },
             "appinitdelay": {
-              "description": "Specifies the time (default 1000 milliseconds) allowed for an application launched using the --app option to initialize"
+              "description": "Specifies the time (default 1000 ms) allowed for an application launched using the --app option to initialize"
             },
             "selectortimeout": {
-              "description": "Specifies the time (default 10000 milliseconds) within which selectors attempt to obtain a node to be returned"
+              "description": "Specifies the time (default 10000 ms) within which selectors attempt to obtain a node to be returned"
             },
             "assertiontimeout": {
-              "description": "Specifies the time (default 3000 milliseconds) TestCafe attempts to successfully execute an assertion if a selector property or a client function was passed as an actual value"
+              "description": "Specifies the time (default 3000 ms) TestCafe attempts to successfully execute an assertion if a selector property or a client function was passed as an actual value"
             },
             "pageloadtimeout": {
-              "description": "Specifies the time (default 3000 milliseconds) passed after the DOMContentLoaded event, within which TestCafe waits for the window.load event to fire"
+              "description": "Specifies the time (default 3000 ms) passed after the DOMContentLoaded event, within which TestCafe waits for the window.load event to fire"
             },
             "speed": {
               "description": "Specifies the test execution speed (default 1, 1~0.01)"
@@ -100,6 +107,9 @@
             },
             "qrcode": {
               "description": "Outputs a QR-code that represents URLs used to connect the remote browsers"
+            },
+            "url": {
+              "description": "Specifies your computer's hostname. It is used when running tests in remote browsers"
             }
           }
         }

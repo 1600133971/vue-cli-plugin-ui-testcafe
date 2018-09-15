@@ -1,6 +1,7 @@
 module.exports = (api, _, __, invoking) => {
   api.render('./template', {
-    hasTS: api.hasPlugin('typescript')
+    hasTS: api.hasPlugin('typescript'),
+    hasCS: api.hasPlugin('coffeescript')
   })
 
   api.extendPackage({
@@ -17,6 +18,10 @@ module.exports = (api, _, __, invoking) => {
 
   if (api.hasPlugin('typescript')) {
     applyTS(api, invoking)
+  }
+
+  if (api.hasPlugin('coffeescript')) {
+    applyCS(api, invoking)
   }
 }
 
@@ -50,6 +55,18 @@ const applyTS = module.exports.applyTS = (api, invoking) => {
         }
         files['tsconfig.json'] = JSON.stringify(parsed, null, 2)
       }
+    })
+  }
+}
+
+const applyCS = module.exports.applyCS = (api, invoking) => {
+  api.extendPackage({
+    devDependencies: {
+    }
+  })
+  // inject testcafe types to tsconfig.json
+  if (invoking) {
+    api.render(files => {
     })
   }
 }

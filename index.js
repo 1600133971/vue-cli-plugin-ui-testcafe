@@ -23,7 +23,8 @@ module.exports = (api, options) => {
     return serverPromise.then(({ url, server }) => {
       const { info } = require("@vue/cli-shared-utils");
       info(`Starting e2e tests...`);
-
+      //info(`args: ` + JSON.stringify(args));
+      //info(`rawArgs: ` + rawArgs);
       const testCafeArgs = [
         args.browser,
         args.file,
