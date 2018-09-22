@@ -1,4 +1,4 @@
-<%_ if (!hasCS) { _%>
+<%_ if (hasCS) { _%>
 import { Selector } from "testcafe"
 
 fixture "test"

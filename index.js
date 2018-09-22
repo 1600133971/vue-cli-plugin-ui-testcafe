@@ -59,7 +59,7 @@ module.exports = (api, options) => {
   api.registerCommand(
     "testcafe",
     {
-      description: "run e2e tests with testcafe",
+      description: "run e2e tests with TestCafe",
       usage: "vue-cli-service testcafe [options]",
       options: Object.assign(
         {

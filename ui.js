@@ -1,6 +1,25 @@
 module.exports = api => {
+  // 带命名空间的版本
+  const {
+    setSharedData,
+    getSharedData,
+    removeSharedData,
+    watchSharedData,
+    unwatchSharedData
+  } = api.namespace('org.vue.st.testcafe.addon.');
+
   function addQuotes(text) {
     return '\\\"' + (text) + '\\\"';
+  }
+
+  String.prototype.startWith = function(str){     
+    var reg = new RegExp("^"+str);     
+    return reg.test(this);        
+  }  
+  
+  String.prototype.endWith = function(str){     
+    var reg = new RegExp(str+"$");     
+    return reg.test(this);        
   }
 
   api.describeConfig({
@@ -448,7 +467,7 @@ module.exports = api => {
       args.push('--browser', addQuotes(answers.browser !== "custom" ? answers.browser : answers.custombrowser));
       if (answers.url) args.push('--url', answers.url);
       if (answers.file) args.push('--file', answers.file);
-      args.push('--reporter', answers.reporter !== "custom" ? answers.reporter : answers.customreporter);
+      args.push('--reporter', (answers.reporter !== "custom" ? answers.reporter : answers.customreporter) + ',st-json:./tests/e2e/st.json');
       if (answers.screenshots) args.push('--screenshots', answers.screenshots);
       if (answers.screenshotsonfails) args.push('--screenshots-on-fails');
       if (answers.screenshotpathpattern) args.push('--screenshot-path-pattern', answers.screenshotpathpattern);
@@ -477,10 +496,50 @@ module.exports = api => {
     onRun: async ({ args, child, cwd }) => {
       // child: Node 子进程
       // cwd: 进程所在目录
+
+      // build-status
+      api.setSharedData('build-status.status', 'Processing');
+      api.setSharedData('build-status.total', '...');
+      api.setSharedData('build-status.skipped', '...');
+      api.setSharedData('build-status.processed', '...');
+      api.setSharedData('build-status.passed', '...');
+      api.setSharedData('build-status.failed', '...');
+      api.setSharedData('build-status.fixtures', '...');
+      api.setSharedData('build-status.warnings', '...');
+      api.setSharedData('build-status.startTime', '...');
+      api.setSharedData('build-status.endTime', '...');
+      api.setSharedData('build-status.duration', '...');
+      api.setSharedData('build-status.userAgents', '...');
+
+      // build-progress
+      api.setSharedData('build-progress.status', 'Compiling');
+      api.setSharedData('build-progress.progress', '0.4');
+      api.setSharedData('build-progress.operations', 'e2e test is started');
     },
     onExit: async ({ args, child, cwd, code, signal }) => {
       // code: 退出码
       // signal: 可能会被使用的杀进程信号
+      var fs = require('fs');
+      var json = JSON.parse(fs.readFileSync("./tests/e2e/st.json"));
+
+      // build-status
+      api.setSharedData('build-status.status', 'Finished');
+      api.setSharedData('build-status.total', json.total.toString());
+      api.setSharedData('build-status.skipped', json.skipped.toString());
+      api.setSharedData('build-status.processed', json.processed.toString());
+      api.setSharedData('build-status.passed', json.passed.toString());
+      api.setSharedData('build-status.failed', json.failed.toString());
+      api.setSharedData('build-status.fixtures', json.fixtures.length.toString());
+      api.setSharedData('build-status.warnings', json.warnings.length.toString());
+      api.setSharedData('build-status.startTime', json.startTime);
+      api.setSharedData('build-status.endTime', json.endTime);
+      api.setSharedData('build-status.duration', json.duration);
+      api.setSharedData('build-status.userAgents', json.userAgents.join(","));
+
+      // build-progress
+      api.setSharedData('build-progress.status', code === 0 ? 'Success' : 'Failed');
+      api.setSharedData('build-progress.progress', '1');
+      api.setSharedData('build-progress.operations', 'e2e test is finished');
     },
     // 额外的视图(仪表盘)
     // 默认情况下，这里是展示终端输出的 `output` 视图
@@ -489,7 +548,7 @@ module.exports = api => {
         id: 'org.vue.st.testcafe.client-addon',
         label: 'org.vue.st.testcafe.tasks.views.label',
         icon: 'dashboard',
-        component: 'org.vue.st.testcafe.components.test'
+        component: 'org.vue.st.testcafe.components.statistics'
       }
     ],
     // 展示任务详情时默认选择的视图 (默认是 `output`)
@@ -501,5 +560,58 @@ module.exports = api => {
     // 包含构建出来的 JS 文件的文件夹
     path: 'vue-cli-addon-ui-testcafe/dist'
     //url: 'http://localhost:8042/index.js'
+  })
+
+  // Hooks
+  api.onProjectOpen((project, previousProject) => {
+    //console.log('onProjectOpen', project.id, previousProject)
+  })
+
+  api.onPluginReload((project) => {
+    //console.log('plugin reloaded', project.id)
+  })
+
+  api.onViewOpen(({ view, cwd }) => {
+    //console.log('onViewOpen', view.id)
+  })
+
+  api.onTaskOpen(({ task, cwd }) => {
+    //console.log('onTaskOpen', task.id)
+    if (task.id.endWith(':testcafe')) {
+      // build-status
+      api.setSharedData('build-status.status', 'Idle');
+      api.setSharedData('build-status.total', '...');
+      api.setSharedData('build-status.skipped', '...');
+      api.setSharedData('build-status.processed', '...');
+      api.setSharedData('build-status.passed', '...');
+      api.setSharedData('build-status.failed', '...');
+      api.setSharedData('build-status.fixtures', '...');
+      api.setSharedData('build-status.warnings', '...');
+      api.setSharedData('build-status.startTime', '...');
+      api.setSharedData('build-status.endTime', '...');
+      api.setSharedData('build-status.duration', '...');
+      api.setSharedData('build-status.userAgents', '...');
+
+      // build-progress
+      api.setSharedData('build-progress.status', 'Idle');
+      api.setSharedData('build-progress.progress', '0');
+      api.setSharedData('build-progress.operations', '...');
+    }
+  })
+
+  api.onTaskRun(({ task, args, child, cwd }) => {
+    //console.log('onTaskRun', task.id)
+  })
+
+  api.onTaskExit(({ task, args, child, signal, code, cwd }) => {
+    //console.log('onTaskExit', task.id)
+  })
+
+  api.onConfigRead(({ config, data, onReadData, tabs, cwd }) => {
+    //console.log('onConfigRead', config.id)
+  })
+
+  api.onConfigWrite(({ config, data, changedFields, cwd }) => {
+    //console.log('onConfigWrite', config.id)
   })
 }
