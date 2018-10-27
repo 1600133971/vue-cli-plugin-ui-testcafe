@@ -48,6 +48,9 @@
             "screenshotsonfails": {
               "description": "一旦出现测试失败就截屏，截屏文件存储在screenshots <path>选项指定的目录"
             },
+            "stoponfirstfail": {
+              "description": "一旦出现测试失败就停止整个测试。选项允许用户不用等待测试任务完成，仅关注第一次错误"
+            },
             "screenshotpathpattern": {
               "description": "指定定制模式构建截屏文件的相对路径和名称,本模式忽略缺省路径模式"
             },

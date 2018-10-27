@@ -86,10 +86,6 @@ module.exports = api => {
           {
             name: 'test',
             value: 'test'
-          },
-          {
-            name: '(unset)',
-            value: '(unset)'
           }
         ],
         message: '--mode',
@@ -248,6 +244,15 @@ module.exports = api => {
         message: '-S, --screenshots-on-fails',
         description: 'org.vue.st.testcafe.tasks.screenshotsonfails.description',
         link: 'https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html#-s---screenshots-on-fails',
+        group: 'org.vue.st.testcafe.tasks.group.secondary'
+      },
+      {
+        name: 'stoponfirstfail',
+        type: 'confirm',
+        default: false,
+        message: '--sf, --stop-on-first-fail',
+        description: 'org.vue.st.testcafe.tasks.stoponfirstfail.description',
+        link: 'http://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html#--sf---stop-on-first-fail',
         group: 'org.vue.st.testcafe.tasks.group.secondary'
       },
       {
@@ -470,6 +475,7 @@ module.exports = api => {
       args.push('--reporter', (answers.reporter !== "custom" ? answers.reporter : answers.customreporter) + ',st-json:./tests/e2e/st.json');
       if (answers.screenshots) args.push('--screenshots', answers.screenshots);
       if (answers.screenshotsonfails) args.push('--screenshots-on-fails');
+      if (answers.stoponfirstfail) args.push('--stop-on-first-fail');
       if (answers.screenshotpathpattern) args.push('--screenshot-path-pattern', answers.screenshotpathpattern);
       if (answers.quarantinemode) args.push('--quarantine-mode');
       if (answers.skipjserrors) args.push('--skip-js-errors');

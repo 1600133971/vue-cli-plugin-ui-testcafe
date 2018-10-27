@@ -48,6 +48,9 @@
             "screenshotsonfails": {
               "description": "Takes a screenshot whenever a test fails. Screenshots are saved to the directory specified in the screenshots <path> option"
             },
+            "stoponfirstfail": {
+              "description": "Stops an entire test run if any test fails. This allows you not to wait for all the tests included in the test task to finish and allows focusing on the first error"
+            },
             "screenshotpathpattern": {
               "description": "Specifies a custom pattern to compose screenshot files' relative path and name. This pattern overrides the default path pattern"
             },
