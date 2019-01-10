@@ -28,7 +28,7 @@ module.exports = (api, options) => {
       const testCafeArgs = [
         args.browser,
         args.file,
-        `--hosename ${url}`,
+        `--hostname ${url}`,
         ...rawArgs
       ].filter(v => v);
       info(`testcafe ` + testCafeArgs.join(" "));
