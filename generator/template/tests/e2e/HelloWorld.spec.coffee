@@ -9,7 +9,7 @@ test "click el-button", (t) =>
   await t
     .click(buttonClick)
 
-hrefClick = Selector "a[href='https://cli.vuejs.org']"
+hrefClick = Selector "#app']"
 test "click href", (t) =>
   await t
     .click(hrefClick)

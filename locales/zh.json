@@ -13,7 +13,12 @@
             }
           },
           "tasks": {
-            "description": "编译并启动testcafe测试",
+            "task1": {
+              "description": "编译并启动testcafe测试"
+            },
+            "task2": {
+              "description": "显示testcafe帮助信息"
+            },
             "group": {
               "general": "通用选项",
               "recommended": "推荐选项",
@@ -112,10 +117,19 @@
               "description": "输出QR码指定连接远程浏览器的URL信息"
             },
             "url": {
-              "description": "指定计算机的宿主名称. 通常被用于通过远程浏览器进行测试."
+              "description": "指定计算机的宿主名称. 通常被用于通过远程浏览器进行测试"
             },
             "views": {
               "label": "统计"
+            },
+            "video": {
+              "description": "使能TestCafe录制测试运行视频并指定保存视频文件的目录"
+            },
+            "videooptions": {
+              "description": "指定TestCafe录制测试运行视频选项"
+            },
+            "videoencodingoptions": {
+              "description": "指定视频编码选项"
             }
           }
         }

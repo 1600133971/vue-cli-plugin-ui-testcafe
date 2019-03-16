@@ -8,7 +8,8 @@ module.exports = (api, _, __, invoking) => {
     devDependencies: {
     },
     scripts: {
-      "testcafe": "vue-cli-service testcafe --mode development --browser 'chrome:headless' --file ./tests/e2e/*.js --reporter st"
+      "testcafe": "vue-cli-service testcafe --mode development --browser 'chrome:headless' --file ./tests/e2e/*.js --reporter st",
+      "testcafe:help": "vue-cli-service testcafe:help"
     }
   })
 

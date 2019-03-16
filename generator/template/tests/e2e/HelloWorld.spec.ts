@@ -10,6 +10,6 @@ test("login", async t => {
 
 test("click href", async t => {
   await t
-    .click(Selector("a[href='https://cli.vuejs.org']"));
+    .click(Selector("#app"));
 });
 <%_ } _%>

@@ -1,5 +1,6 @@
 module.exports = (api, options) => {
   const chalk = require("chalk");
+  const { info } = require("@vue/cli-shared-utils");
 
   function removeArg(rawArgs, arg) {
     const matchRE = new RegExp(`^--${arg}`);
@@ -21,14 +22,13 @@ module.exports = (api, options) => {
       : api.service.run("serve", { mode: args.mode || "production" });
 
     return serverPromise.then(({ url, server }) => {
-      const { info } = require("@vue/cli-shared-utils");
       info(`Starting e2e tests...`);
       //info(`args: ` + JSON.stringify(args));
       //info(`rawArgs: ` + rawArgs);
       const testCafeArgs = [
         args.browser,
         args.file,
-        `--hosename ${url}`,
+        `--hostname ${url}`,
         ...rawArgs
       ].filter(v => v);
       info(`testcafe ` + testCafeArgs.join(" "));
@@ -74,5 +74,48 @@ module.exports = (api, options) => {
         )
     },
     (args, rawArgs) => run(args, rawArgs)
+  );
+
+  function help(args, rawArgs) {
+    const execa = require("execa");
+    const testcafeBinPath = require.resolve("testcafe/bin/testcafe");
+    let runner = execa(testcafeBinPath, [`--list-browsers`], { stdio: "inherit" });
+    runner.on("exit", () => {
+      info(`testcafe --list-browsers`);
+      runner = execa(testcafeBinPath, [`--version`], { stdio: "inherit" });
+      runner.on("exit", () => {
+        info(`testcafe --version`);
+        runner = execa(testcafeBinPath, [`--help`], { stdio: "inherit" });
+        runner.on("exit", () => {
+          info(`testcafe --help`);
+        });
+        runner.on("error", () => {});
+      });
+      runner.on("error", () => {});
+    });
+    runner.on("error", () => {});
+
+    if (process.env.VUE_CLI_TEST) {
+      runner.on("exit", code => {
+        process.exit(code);
+      });
+    }
+
+    return runner;
+  }
+
+  api.registerCommand(
+    "testcafe:help",
+    {
+      description: "display TestCafe help info.",
+      usage: "vue-cli-service testcafe:help",
+      options: Object.assign({}),
+      details:
+        `All TestCafe CLI options are also supported:\n` +
+        chalk.yellow(
+          `https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html`
+        )
+    },
+    (args, rawArgs) => help(args, rawArgs)
   );
 };

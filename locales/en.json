@@ -13,7 +13,12 @@
             }
           },
           "tasks": {
-            "description": "Compile and testing with testcafe",
+            "task1": {
+              "description": "Compile and testing with testcafe"
+            },
+            "task2": {
+              "description": "Display testcafe's help information"
+            },
             "group": {
               "general": "General Options",
               "recommended": "Recommended Options",
@@ -116,6 +121,15 @@
             },
             "views": {
               "label": "Statistics"
+            },
+            "video": {
+              "description": "Enables TestCafe to record videos of test runs and specifies the base directory to save these videos"
+            },
+            "videooptions": {
+              "description": "Specifies options that define how TestCafe records videos of test runs"
+            },
+            "videoencodingoptions": {
+              "description": "Specifies video encoding options"
             }
           }
         }

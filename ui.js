@@ -66,8 +66,21 @@ module.exports = api => {
   })
 
   api.describeTask({
+    match: /vue-cli-service testcafe:help/,
+    description: 'org.vue.st.testcafe.tasks.task2.description',
+    link: 'https://github.com/1600133971/vue-cli-plugin-e2e-st-testcafe#injected-commands',
+    prompts: [ /* ... */ ],
+    onBeforeRun: ({ answers, args }) => {},
+    onRun: ({ args, child, cwd }) => {},
+    onExit: ({ args, child, cwd, code, signal }) => {},
+    views: [ /* ... */ ],
+    // 展示任务详情时默认选择的视图 (默认是 `output`)
+    //defaultView: '...'
+  })
+
+  api.describeTask({
     match: /vue-cli-service testcafe/,
-    description: 'org.vue.st.testcafe.tasks.description',
+    description: 'org.vue.st.testcafe.tasks.task1.description',
     link: 'https://github.com/1600133971/vue-cli-plugin-e2e-st-testcafe#injected-commands',
     prompts: [
       {
@@ -75,18 +88,9 @@ module.exports = api => {
         type: 'list',
         default: 'development',
         choices: [
-          {
-            name: 'development',
-            value: 'development'
-          },
-          {
-            name: 'production',
-            value: 'production'
-          },
-          {
-            name: 'test',
-            value: 'test'
-          }
+          {name: 'development', value: 'development'},
+          {name: 'production', value: 'production'},
+          {name: 'test', value: 'test'}
         ],
         message: '--mode',
         description: 'org.vue.st.testcafe.tasks.mode.description',
@@ -106,54 +110,18 @@ module.exports = api => {
         type: 'list',
         default: 'chrome:headless',
         choices: [
-          {
-            name: 'chrome:headless',
-            value: 'chrome:headless'
-          },
-          {
-            name: 'chrome',
-            value: 'chrome'
-          },
-          {
-            name: 'firefox:headless',
-            value: 'firefox:headless'
-          },
-          {
-            name: 'firefox',
-            value: 'firefox'
-          },
-          {
-            name: 'chromium',
-            value: 'chromium'
-          },
-          {
-            name: 'chrome-canary',
-            value: 'chrome-canary'
-          },
-          {
-            name: 'ie',
-            value: 'ie'
-          },
-          {
-            name: 'edge',
-            value: 'edge'
-          },
-          {
-            name: 'opera',
-            value: 'opera'
-          },
-          {
-            name: 'safari',
-            value: 'safari'
-          },
-          {
-            name: 'all',
-            value: 'all'
-          },
-          {
-            name: 'custom',
-            value: 'custom'
-          }
+          {name: 'chrome:headless', value: 'chrome:headless'},
+          {name: 'chrome', value: 'chrome'},
+          {name: 'firefox:headless', value: 'firefox:headless'},
+          {name: 'firefox', value: 'firefox'},
+          {name: 'chromium', value: 'chromium'},
+          {name: 'chrome-canary',value: 'chrome-canary'},
+          {name: 'ie', value: 'ie'},
+          {name: 'edge', value: 'edge'},
+          {name: 'opera', value: 'opera'},
+          {name: 'safari', value: 'safari'},
+          {name: 'all', value: 'all'},
+          {name: 'custom', value: 'custom'}
         ],
         message: '--browser',
         description: 'org.vue.st.testcafe.tasks.browser.description',
@@ -180,40 +148,16 @@ module.exports = api => {
       {
         name: 'reporter',
         type: 'list',
-        default: 'spec',
+        default: 'st',
         choices: [
-          {
-            name: 'spec',
-            value: 'spec'
-          },
-          {
-            name: 'list',
-            value: 'list'
-          },
-          {
-            name: 'minimal',
-            value: 'minimal'
-          },
-          {
-            name: 'xunit',
-            value: 'xunit'
-          },
-          {
-            name: 'json',
-            value: 'json'
-          },
-          {
-            name: 'st',
-            value: 'st'
-          },
-          {
-            name: 'st-minimal',
-            value: 'st-minimal'
-          },
-          {
-            name: 'custom',
-            value: 'custom'
-          }
+          {name: 'spec', value: 'spec'},
+          {name: 'list', value: 'list'},
+          {name: 'minimal', value: 'minimal'},
+          {name: 'xunit', value: 'xunit'},
+          {name: 'json', value: 'json'},
+          {name: 'st', value: 'st'},
+          {name: 'st-minimal', value: 'st-minimal'},
+          {name: 'custom', value: 'custom'}
         ],
         message: '-r [name[:file],[...]], --reporter [name[:file],[...]]',
         description: 'org.vue.st.testcafe.tasks.reporter.description',
@@ -262,6 +206,33 @@ module.exports = api => {
         message: '-p, --screenshot-path-pattern',
         description: 'org.vue.st.testcafe.tasks.screenshotpathpattern.description',
         link: 'https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html#-p---screenshot-path-pattern',
+        group: 'org.vue.st.testcafe.tasks.group.secondary'
+      },
+      {
+        name: 'video',
+        type: 'input',
+        default: '',
+        message: '--video [basePath]',
+        description: 'org.vue.st.testcafe.tasks.video.description',
+        link: 'https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html#--video-basepath',
+        group: 'org.vue.st.testcafe.tasks.group.secondary'
+      },
+      {
+        name: 'videooptions',
+        type: 'input',
+        default: '',
+        message: '--video-options [option=value[,option2=value2,...]]',
+        description: 'org.vue.st.testcafe.tasks.videooptions.description',
+        link: 'https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html#--video-options-optionvalueoption2value2',
+        group: 'org.vue.st.testcafe.tasks.group.secondary'
+      },
+      {
+        name: 'videoencodingoptions',
+        type: 'input',
+        default: '',
+        message: '--video-encoding-options [option=value[,option2=value2,...]]',
+        description: 'org.vue.st.testcafe.tasks.videoencodingoptions.description',
+        link: 'https://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html#--video-encoding-options-optionvalueoption2value2',
         group: 'org.vue.st.testcafe.tasks.group.secondary'
       },
       {
@@ -341,22 +312,10 @@ module.exports = api => {
         type: 'list',
         default: '1',
         choices: [
-          {
-            name: '1',
-            value: '1'
-          },
-          {
-            name: '2',
-            value: '2'
-          },
-          {
-            name: '3',
-            value: '3'
-          },
-          {
-            name: '4',
-            value: '4'
-          }
+          {name: '1', value: '1'},
+          {name: '2', value: '2'},
+          {name: '3', value: '3'},
+          {name: '4', value: '4'}
         ],
         message: '-c [n], --concurrency [n]',
         description: 'org.vue.st.testcafe.tasks.concurrency.description',
@@ -477,6 +436,9 @@ module.exports = api => {
       if (answers.screenshotsonfails) args.push('--screenshots-on-fails');
       if (answers.stoponfirstfail) args.push('--stop-on-first-fail');
       if (answers.screenshotpathpattern) args.push('--screenshot-path-pattern', answers.screenshotpathpattern);
+      if (answers.video) args.push('--video', answers.video);
+      if (answers.videooptions) args.push('--video-options', answers.videooptions);
+      if (answers.videoencodingoptions) args.push('--video-encoding-options', answers.videoencodingoptions);
       if (answers.quarantinemode) args.push('--quarantine-mode');
       if (answers.skipjserrors) args.push('--skip-js-errors');
       if (answers.skipuncaughterror) args.push('--skip-uncaught-errors');
