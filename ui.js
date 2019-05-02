@@ -12,21 +12,21 @@ module.exports = api => {
     return '\\\"' + (text) + '\\\"';
   }
 
-  String.prototype.startWith = function(str){     
-    var reg = new RegExp("^"+str);     
-    return reg.test(this);        
+  String.prototype.startWith = function(str) {
+    var reg = new RegExp("^"+str);
+    return reg.test(this);
   }  
   
-  String.prototype.endWith = function(str){     
-    var reg = new RegExp(str+"$");     
-    return reg.test(this);        
+  String.prototype.endWith = function(str) {
+    var reg = new RegExp(str+"$");
+    return reg.test(this);
   }
 
   api.describeConfig({
     id: 'org.vue.st.testcafe.configuration',
     name: 'TestCafe',
     description: 'org.vue.st.testcafe.config.description',
-    link: 'https://github.com/1600133971/vue-cli-plugin-e2e-st-testcafe',
+    link: 'https://github.com/1600133971/vue-cli-plugin-ui-testcafe',
     files: {
       // eslintrc.js
       eslint: {
@@ -68,7 +68,7 @@ module.exports = api => {
   api.describeTask({
     match: /vue-cli-service testcafe:help/,
     description: 'org.vue.st.testcafe.tasks.task2.description',
-    link: 'https://github.com/1600133971/vue-cli-plugin-e2e-st-testcafe#injected-commands',
+    link: 'https://github.com/1600133971/vue-cli-plugin-ui-testcafe#injected-commands',
     prompts: [ /* ... */ ],
     onBeforeRun: ({ answers, args }) => {},
     onRun: ({ args, child, cwd }) => {},
@@ -81,7 +81,7 @@ module.exports = api => {
   api.describeTask({
     match: /vue-cli-service testcafe/,
     description: 'org.vue.st.testcafe.tasks.task1.description',
-    link: 'https://github.com/1600133971/vue-cli-plugin-e2e-st-testcafe#injected-commands',
+    link: 'https://github.com/1600133971/vue-cli-plugin-ui-testcafe#injected-commands',
     prompts: [
       {
         name: 'mode',
@@ -488,26 +488,36 @@ module.exports = api => {
       // code: 退出码
       // signal: 可能会被使用的杀进程信号
       var fs = require('fs');
-      var json = JSON.parse(fs.readFileSync("./tests/e2e/st.json"));
+      try {
+        fs.statSync("./tests/e2e/st.json");
+        var json = JSON.parse(fs.readFileSync("./tests/e2e/st.json"));
 
-      // build-status
-      api.setSharedData('build-status.status', 'Finished');
-      api.setSharedData('build-status.total', json.total.toString());
-      api.setSharedData('build-status.skipped', json.skipped.toString());
-      api.setSharedData('build-status.processed', json.processed.toString());
-      api.setSharedData('build-status.passed', json.passed.toString());
-      api.setSharedData('build-status.failed', json.failed.toString());
-      api.setSharedData('build-status.fixtures', json.fixtures.length.toString());
-      api.setSharedData('build-status.warnings', json.warnings.length.toString());
-      api.setSharedData('build-status.startTime', json.startTime);
-      api.setSharedData('build-status.endTime', json.endTime);
-      api.setSharedData('build-status.duration', json.duration);
-      api.setSharedData('build-status.userAgents', json.userAgents.join(","));
+        // build-status
+        api.setSharedData('build-status.status', 'Finished');
+        api.setSharedData('build-status.total', json.total.toString());
+        api.setSharedData('build-status.skipped', json.skipped.toString());
+        api.setSharedData('build-status.processed', json.processed.toString());
+        api.setSharedData('build-status.passed', json.passed.toString());
+        api.setSharedData('build-status.failed', json.failed.toString());
+        api.setSharedData('build-status.fixtures', json.fixtures.length.toString());
+        api.setSharedData('build-status.warnings', json.warnings.length.toString());
+        api.setSharedData('build-status.startTime', json.startTime);
+        api.setSharedData('build-status.endTime', json.endTime);
+        api.setSharedData('build-status.duration', json.duration);
+        api.setSharedData('build-status.userAgents', json.userAgents.join(","));
 
-      // build-progress
-      api.setSharedData('build-progress.status', code === 0 ? 'Success' : 'Failed');
-      api.setSharedData('build-progress.progress', '1');
-      api.setSharedData('build-progress.operations', 'e2e test is finished');
+        // build-progress
+        api.setSharedData('build-progress.status', code === 0 ? 'Success' : 'Failed');
+        api.setSharedData('build-progress.progress', '1');
+        api.setSharedData('build-progress.operations', 'e2e test is finished');
+      } catch(e) {
+        //捕获异常
+        // build-status
+        api.setSharedData('build-status.status', 'Finished');
+        api.setSharedData('build-progress.status', 'Success');
+        api.setSharedData('build-progress.progress', '0');
+        api.setSharedData('build-progress.operations', 'e2e test is finished');
+      }
     },
     // 额外的视图(仪表盘)
     // 默认情况下，这里是展示终端输出的 `output` 视图
