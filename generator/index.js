@@ -1,7 +1,8 @@
 module.exports = (api, _, __, invoking) => {
   api.render('./template', {
     hasTS: api.hasPlugin('typescript'),
-    hasCS: api.hasPlugin('coffeescript')
+    hasCS: api.hasPlugin('coffeescript'),
+    hasElement: api.hasPlugin('element-ui')
   })
 
   api.extendPackage({
@@ -23,6 +24,10 @@ module.exports = (api, _, __, invoking) => {
 
   if (api.hasPlugin('coffeescript')) {
     applyCS(api, invoking)
+  }
+
+  if (api.hasPlugin('element-ui')) {
+    applyElement(api, invoking)
   }
 }
 
@@ -61,6 +66,18 @@ const applyTS = module.exports.applyTS = (api, invoking) => {
 }
 
 const applyCS = module.exports.applyCS = (api, invoking) => {
+  api.extendPackage({
+    devDependencies: {
+    }
+  })
+  // inject testcafe types to tsconfig.json
+  if (invoking) {
+    api.render(files => {
+    })
+  }
+}
+
+const applyElement = module.exports.applyElement = (api, invoking) => {
   api.extendPackage({
     devDependencies: {
     }
